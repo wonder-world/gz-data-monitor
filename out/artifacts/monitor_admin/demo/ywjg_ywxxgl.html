@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>药物信息管理</title>
+    <meta name="description" content="Dynamic tables and grids using jqGrid plugin"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../css/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" href="../css/ui.jqgrid.min.css"/>
+    <link rel="stylesheet" href="../css/fonts.googleapis.com.css"/>
+    <link rel="stylesheet" href="../css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style"/>
+    <link rel="stylesheet" href="../css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="../css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="../css/myform.css"/>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="../css/ace-part2.min.css" class="ace-main-stylesheet"/>
+    <link rel="stylesheet" href="../css/ace-ie.min.css"/>
+    <![endif]-->
+    <!-- ace settings handler -->
+    <script src="../js/ace-extra.min.js"></script>
+    <!--[if lte IE 8]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <style>
+        /** 编辑输入框 **/
+        .input-group-addon {
+            background: transparent;
+            border-color: #e7ebee;
+        }
+
+    </style>
+    <![endif]-->
+    <script src="../js/myform.js"></script>
+</head>
+
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default ace-save-state">
+    <div class="navbar-container ace-save-state" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+            <span class="sr-only"></span><span class="icon-bar"></span>
+            <span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <div class="navbar-header pull-left">
+            <a href="index.html" class="navbar-brand">
+                <small><i class="fa fa-leaf"></i>基本药物监管系统</small>
+            </a>
+        </div>
+
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="light-blue dropdown-modal">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <div class="i-info">
+                            <span id="i_name">南沙卫计局</span>
+                            <span id="i_clock"></span>
+                        </div>
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li><a href="#"><i class="ace-icon fa fa-power-off"></i>退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {
+        }
+    </script>
+
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">
+            try {
+                ace.settings.loadState('sidebar')
+            } catch (e) {
+            }
+        </script>
+
+        <div class="sidebar-shortcuts" id="sidebar-shortcuts"></div><!-- /.sidebar-shortcuts -->
+
+        <ul class="nav nav-list">
+            <li class="">
+                <a href="index.html">
+                    <i class="menu-icon fa fa-tachometer"></i>
+                    <span class="menu-text">基本药物监管系统</span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+            <li class="active open">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text">主管单位监管模块</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+
+                    <li class="active open">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>基本药物目录管理
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="ywjg_ywmlgl.html"><i class="menu-icon fa fa-caret-right"></i>药物目录管理</a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="active">
+                                <a href="ywjg_ywxxgl.html"><i class="menu-icon fa fa-caret-right"></i>药物信息管理</a>
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="ywjg_ywpsjg.html"><i class="menu-icon fa fa-caret-right"></i>药物配送监管</a>
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="">
+                        <a href="ywjg_blfyjc.html"><i class="menu-icon fa fa-caret-right"></i>不良反应监测</a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-list"></i>
+                    <span class="menu-text">医疗机构监管模块</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="ywjg_ywdhjg.html"><i class="menu-icon fa fa-caret-right"></i>药物到货监管</a>
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="">
+                        <a href="ywjg_jbywsyjgsb.html"><i class="menu-icon fa fa-caret-right"></i>基本药物使用监管上报</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="ywjg_ykgl.html"><i class="menu-icon fa fa-caret-right"></i>药库管理</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="ywjg_jbywblfybg.html"><i class="menu-icon fa fa-caret-right"></i>基本药物不良反应报告</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <!--<li class="">-->
+                    <!--<a href="jbywcfj.html"><i class="menu-icon fa fa-caret-right"></i>基本药物处方集</a>-->
+                    <!--<b class="arrow"></b>-->
+                    <!--</li>-->
+                </ul>
+            </li>
+        </ul>
+
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
+               data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">基本药物监管系统</a>
+                    </li>
+                    <li>
+                        <a href="#">主管单位监管模块</a>
+                    </li>
+                    <li>
+                        <a href="#">基本药物目录管理</a>
+                    </li>
+                    <li class="active">药物信息管理</li>
+                </ul>
+                <div class="nav-search" id="nav-search"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <!--<div class="alert alert-info">-->
+                    <!--<button class="close" data-dismiss="alert">-->
+                    <!--<i class="ace-icon fa fa-times"></i>-->
+                    <!--</button>-->
+
+                    <!--<i class="ace-icon fa fa-hand-o-right"></i>-->
+                    <!--Please note that demo server is not configured to save the changes, therefore you may see an-->
+                    <!--error message.-->
+                    <!--</div>-->
+                    <!--搜索框-->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <p class="space-4"/>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <label class="col-sm-4 control-label">药品名</label>
+                                        <input class="col-sm-8 blue" type="text" name="medicalId"/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <label class="col-sm-4 control-label">审核状态</label>
+                                            <div class="col-sm-8">
+                                                <select class=" selectpicker show-tick form-control" data-value="全部">
+                                                    <option>全部</option>
+                                                    <option>已通过</option>
+                                                    <option>审核中</option>
+                                                    <option>未通过</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button id="btn_search_reset" class="btn btn-sm btn-primary"><i
+                                                class="ace-icon fa fa-search"></i>搜索
+                                        </button>
+                                        <button id="btn_search" class="btn btn-sm btn-purple"><i
+                                                class="ace-icon fa fa-reply"></i>重置
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="space-4"/>
+                    <table id="grid-table"></table>
+
+                    <div id="grid-pager"></div>
+                            <!--审核、上报模态框-->
+                            <div class="modal fade" id="myShenheModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="myModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog" style="width: 480px;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                &times;
+                                            </button>
+                                            <h4 class="blue bigger" id="myShenheModalLabel">
+                                                审核
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body pre-scrollable">
+                                            <form name="FormPost" id="FrmGrid_grid-table-Shenhe"
+                                                  onsubmit="return false;" style="width:auto;height:auto;">
+                                                <div class="FormError ui-state-error" style="display:none;"></div>
+                                                <div class="tinfo topinfo"></div>
+                                                <table id="TblGrid_grid-table-Shenhe" class="EditTable ui-common-table">
+                                                    <tbody id="tbody_shenhe">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-2 control-label">意见</label>
+                                                    </div>
+                                                    <div>
+                                                        <div class="col-sm-12">
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    </tbody>
+                                                </table>
+                                                <div class="binfo topinfo bottominfo"></div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                        </button>
+                                        <button type="button" class="btn btn-primary" onclick="SubmitButton()">
+                                            确认
+                                        </button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+
+                            <!-- 模态框（Modal） -->
+                            <div id="modal_form" class="modal" tabindex="-1">
+                                <div class="modal-dialog" style="width:70%">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close btn-sm" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="blue bigger">药物信息管理</h4>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <form id="form_main" role="form">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>ID:</td>
+                                                        <td><input name="id"/></td>
+                                                        <td>药品基药属性:</td>
+                                                        <td><input name="NEDRUGTYPE"/></td>
+                                                        <td>产品名:</td>
+                                                        <td><input name="MEDI_NAME"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>产品英文名:</td>
+                                                        <td><input name="MEDI_NAME_EN"/></td>
+                                                        <td>商品名:</td>
+                                                        <td><input name="COM_NAME"/></td>
+                                                        <td>剂型:</td>
+                                                        <td><input name="DOSAGE_FORM"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>制剂规格:</td>
+                                                        <td><input type="text" name="DRUG_SPEC"/></td>
+                                                        <td>批准文号:</td>
+                                                        <td><input name="APPROVAL_NUMBER"/></td>
+                                                        <td>药品通用名:</td>
+                                                        <td><input type="text" name="GENERIC_NAME"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>生产厂商简称:</td>
+                                                        <td><input name="MANUFACTURER_ABBR"/></td>
+                                                        <td>生产厂商全称:</td>
+                                                        <td><input type="text" name="MANUFACTURER"/></td>
+                                                        <td>生产厂商曾用名:</td>
+                                                        <td><input type="text" name="MANUFACTURER_OLD"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>包装单位</td>
+                                                        <td><input type="text" name="PACKAGING_UNIT"/></td>
+                                                        <td>最小使用单位</td>
+                                                        <td><input type="text" name="MIN_USE_UNIT"/></td>
+                                                        <td>包装规格</td>
+                                                        <td><input type="text" name="PACKING_SPECIFICATIONS"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>规格属性:</td>
+                                                        <td><input name="SPE_TYPE_NAME"/></td>
+                                                        <td>包装数量:</td>
+                                                        <td><input name="PACKAGES_NUMBER"/></td>
+                                                        <td>包装材质:</td>
+                                                        <td><input name="PACKAGING_MATERIAL"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>包装方式:</td>
+                                                        <td><input name="PACKAGING_METHOD"/></td>
+                                                        <td>系统名:</td>
+                                                        <td><input name="SYS_NAME"/></td>
+                                                        <td>产品编码:</td>
+                                                        <td><input name="CODE"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>异名</td>
+                                                        <td><input type="text" name="ALIAS"/></td>
+                                                        <td>处方</td>
+                                                        <td><input type="text" name="DESCRIPT"/></td>
+                                                        <td>包装转换比</td>
+                                                        <td><input type="text" name="CONVERT_PER"/></td>
+                                                    </tr> <tr>
+                                                        <td>审核状态</td>
+                                                        <td><input type="text" name="DATA_STATUS"/></td>
+                                                        <td>审核备注</td>
+                                                        <td><input type="text" name="STATUS_REMARK"/></td>
+                                                        <td>创建人</td>
+                                                        <td><input type="text" name="CREATE_USER"/></td>
+                                                    </tr> <tr>
+                                                        <td>修改人</td>
+                                                        <td><input type="text" name="MODIFY_USER"/></td>
+                                                        <td>创建时间</td>
+                                                        <td><input type="text" name="CREATE_DATE"/></td>
+                                                        <td>修改时间</td>
+                                                        <td><input type="text" name="MODIFY_DATE"/></td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button id="btn_cancel" class="btn btn-sm btn-grey"><i class="ace-icon fa fa-times"></i>取消</button>
+                                        <button id="btn_submit" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-check"></i>保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+
+</div><!-- /.main-content -->
+
+<div class="footer">
+    <div class="footer-inner">
+        <div class="footer-content">
+
+        </div>
+    </div>
+</div>
+
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+
+<!--[if !IE]> -->
+<script src="../js/jquery-2.1.4.min.js"></script>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<!-- <![endif]-->
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='../js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-datepicker.min.js"></script>
+<script src="../js/jquery.jqGrid.min.js"></script>
+<script src="../js/grid.locale-en.js"></script>
+<script src="../js/ace-elements.min.js"></script>
+<script src="../js/ace.min.js"></script>
+<script>
+    var grid_data =
+        [
+
+            {
+                id:"27798",
+                NEDRUGTYPE:"基药、国药",
+                MEDI_NAME:"骨刺胶囊",
+                MEDI_NAME_EN:"",
+                COM_NAME:"",
+                DOSAGE_FORM:"胶囊剂",
+                DRUG_SPEC:"0.36g",
+                APPROVAL_NUMBER:"国药准字Z20050179",
+                GENERIC_NAME:"骨刺",
+                MANUFACTURER_ABBR:"浙江维康",
+                MANUFACTURER:"浙江维康药业股份有限公司",
+                MANUFACTURER_OLD:"浙江维康药业有限公司",
+                PACKAGING_UNIT:"盒",
+                MIN_USE_UNIT:"粒",
+                PACKING_SPECIFICATIONS:"36粒/盒",
+                SPE_TYPE_NAME:"无",
+                PACKAGES_NUMBER:"9",
+                PACKAGING_MATERIAL:"空",
+                PACKAGING_METHOD:"",
+                SYS_NAME:"",
+                CODE:"Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+                ALIAS:"",
+                DESCRIPT:"昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.",
+                CONVERT_PER:"36",
+                DATA_STATUS:"审核中",
+                STATUS_REMARK:""
+            },            {
+                id:"27799",
+                NEDRUGTYPE:"基药、国药",
+                MEDI_NAME:"骨刺胶囊",
+                MEDI_NAME_EN:"",
+                COM_NAME:"",
+                DOSAGE_FORM:"胶囊剂",
+                DRUG_SPEC:"0.36g",
+                APPROVAL_NUMBER:"国药准字Z20050179",
+                GENERIC_NAME:"骨刺",
+                MANUFACTURER_ABBR:"浙江维康",
+                MANUFACTURER:"浙江维康药业股份有限公司",
+                MANUFACTURER_OLD:"浙江维康药业有限公司",
+                PACKAGING_UNIT:"盒",
+                MIN_USE_UNIT:"粒",
+                PACKING_SPECIFICATIONS:"36粒/盒",
+                SPE_TYPE_NAME:"无",
+                PACKAGES_NUMBER:"9",
+                PACKAGING_MATERIAL:"空",
+                PACKAGING_METHOD:"",
+                SYS_NAME:"",
+                CODE:"Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+                ALIAS:"",
+                DESCRIPT:"昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.",
+                CONVERT_PER:"36",
+                DATA_STATUS:"审核中",
+                STATUS_REMARK:""
+            },            {
+                id:"27791",
+                NEDRUGTYPE:"基药、国药",
+                MEDI_NAME:"骨刺胶囊",
+                MEDI_NAME_EN:"",
+                COM_NAME:"",
+                DOSAGE_FORM:"胶囊剂",
+                DRUG_SPEC:"0.36g",
+                APPROVAL_NUMBER:"国药准字Z20050179",
+                GENERIC_NAME:"骨刺",
+                MANUFACTURER_ABBR:"浙江维康",
+                MANUFACTURER:"浙江维康药业股份有限公司",
+                MANUFACTURER_OLD:"浙江维康药业有限公司",
+                PACKAGING_UNIT:"盒",
+                MIN_USE_UNIT:"粒",
+                PACKING_SPECIFICATIONS:"36粒/盒",
+                SPE_TYPE_NAME:"无",
+                PACKAGES_NUMBER:"9",
+                PACKAGING_MATERIAL:"空",
+                PACKAGING_METHOD:"",
+                SYS_NAME:"",
+                CODE:"Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+                ALIAS:"",
+                DESCRIPT:"昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.",
+                CONVERT_PER:"36",
+                DATA_STATUS:"审核中",
+                STATUS_REMARK:""
+            },            {
+                id:"27792",
+                NEDRUGTYPE:"基药、国药",
+                MEDI_NAME:"骨刺胶囊",
+                MEDI_NAME_EN:"",
+                COM_NAME:"",
+                DOSAGE_FORM:"胶囊剂",
+                DRUG_SPEC:"0.36g",
+                APPROVAL_NUMBER:"国药准字Z20050179",
+                GENERIC_NAME:"骨刺",
+                MANUFACTURER_ABBR:"浙江维康",
+                MANUFACTURER:"浙江维康药业股份有限公司",
+                MANUFACTURER_OLD:"浙江维康药业有限公司",
+                PACKAGING_UNIT:"盒",
+                MIN_USE_UNIT:"粒",
+                PACKING_SPECIFICATIONS:"36粒/盒",
+                SPE_TYPE_NAME:"无",
+                PACKAGES_NUMBER:"9",
+                PACKAGING_MATERIAL:"空",
+                PACKAGING_METHOD:"",
+                SYS_NAME:"",
+                CODE:"Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+                ALIAS:"",
+                DESCRIPT:"昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.",
+                CONVERT_PER:"36",
+                DATA_STATUS:"审核中",
+                STATUS_REMARK:""
+            },            {
+                id:"27793",
+                NEDRUGTYPE:"基药、国药",
+                MEDI_NAME:"骨刺胶囊",
+                MEDI_NAME_EN:"",
+                COM_NAME:"",
+                DOSAGE_FORM:"胶囊剂",
+                DRUG_SPEC:"0.36g",
+                APPROVAL_NUMBER:"国药准字Z20050179",
+                GENERIC_NAME:"骨刺",
+                MANUFACTURER_ABBR:"浙江维康",
+                MANUFACTURER:"浙江维康药业股份有限公司",
+                MANUFACTURER_OLD:"浙江维康药业有限公司",
+                PACKAGING_UNIT:"盒",
+                MIN_USE_UNIT:"粒",
+                PACKING_SPECIFICATIONS:"36粒/盒",
+                SPE_TYPE_NAME:"无",
+                PACKAGES_NUMBER:"9",
+                PACKAGING_MATERIAL:"空",
+                PACKAGING_METHOD:"",
+                SYS_NAME:"",
+                CODE:"Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+                ALIAS:"",
+                DESCRIPT:"昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.",
+                CONVERT_PER:"36",
+                DATA_STATUS:"审核中",
+                STATUS_REMARK:""
+            },            {
+                id:"27794",
+                NEDRUGTYPE:"基药、国药",
+                MEDI_NAME:"骨刺胶囊",
+                MEDI_NAME_EN:"",
+                COM_NAME:"",
+                DOSAGE_FORM:"胶囊剂",
+                DRUG_SPEC:"0.36g",
+                APPROVAL_NUMBER:"国药准字Z20050179",
+                GENERIC_NAME:"骨刺",
+                MANUFACTURER_ABBR:"浙江维康",
+                MANUFACTURER:"浙江维康药业股份有限公司",
+                MANUFACTURER_OLD:"浙江维康药业有限公司",
+                PACKAGING_UNIT:"盒",
+                MIN_USE_UNIT:"粒",
+                PACKING_SPECIFICATIONS:"36粒/盒",
+                SPE_TYPE_NAME:"无",
+                PACKAGES_NUMBER:"9",
+                PACKAGING_MATERIAL:"空",
+                PACKAGING_METHOD:"",
+                SYS_NAME:"",
+                CODE:"Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+                ALIAS:"",
+                DESCRIPT:"昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.",
+                CONVERT_PER:"36",
+                DATA_STATUS:"审核中",
+                STATUS_REMARK:""
+            },            {
+                id:"27795",
+                NEDRUGTYPE:"基药、国药",
+                MEDI_NAME:"骨刺胶囊",
+                MEDI_NAME_EN:"",
+                COM_NAME:"",
+                DOSAGE_FORM:"胶囊剂",
+                DRUG_SPEC:"0.36g",
+                APPROVAL_NUMBER:"国药准字Z20050179",
+                GENERIC_NAME:"骨刺",
+                MANUFACTURER_ABBR:"浙江维康",
+                MANUFACTURER:"浙江维康药业股份有限公司",
+                MANUFACTURER_OLD:"浙江维康药业有限公司",
+                PACKAGING_UNIT:"盒",
+                MIN_USE_UNIT:"粒",
+                PACKING_SPECIFICATIONS:"36粒/盒",
+                SPE_TYPE_NAME:"无",
+                PACKAGES_NUMBER:"9",
+                PACKAGING_MATERIAL:"空",
+                PACKAGING_METHOD:"",
+                SYS_NAME:"",
+                CODE:"Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+                ALIAS:"",
+                DESCRIPT:"昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.",
+                CONVERT_PER:"36",
+                DATA_STATUS:"审核中",
+                STATUS_REMARK:""
+            }
+        ]
+
+</script>
+<script>
+    //搜索功能
+    function selectTable() {
+        $('#mySelectModal').modal('show');
+    }
+    function submitBtn(){
+        $('#myAddModal').modal('hide');
+        $('#myModal').modal('hide');
+        alert("提交成功");
+    }
+    function viewTable() {
+        $('#myViewModal').modal('show');
+    }
+
+    //审核功能
+    function shenhe() {
+        $('#myShenheModal').modal('show');
+        $("#myShenheModal").find("#myShenheModalLabel").html("审核");
+    }
+
+    //上报功能
+    function shangbao() {
+        $('#myShenheModal').modal('show');
+        $("#myShenheModal").find("#myShenheModalLabel").html("上报");
+    }
+
+    function SubmitButton() {
+        $("#myShenheModal").modal('hide');
+        alert("成功");
+    }
+    function getSelectRowDataId() {
+        var id = $('#grid-table').jqGrid('getGridParam', 'selrow');
+        console.log("id=="+id);
+        if (id == null || id == '' || id == 'undefined') {
+            alert("请选择一行数据！");
+        } else {
+            var rowData = $("#grid-table").jqGrid('getRowData', id);
+            //当前选中行的数据中的ID
+            var selectDataId = null;
+            for (var key in rowData) {
+                if (key == "id") {
+                    selectDataId = (rowData[key]); //获取对应的value值
+                }
+            }
+            return selectDataId;
+        }
+    }
+
+    //获得与该ID相匹配的数据(查看与编辑功能)
+    function getDataFromJsonData() {
+            var id = getSelectRowDataId();
+        //原JSON数据
+        var json = grid_data_detail;
+        //返回的data数据
+        var data = null;
+        for (var key in json) {
+            //获取原json（grid_data_detail）中的json数组
+            var jsonkey = json[key];//获取对应的value值
+            // console.log(key+":");
+            //console.log(json[key]);
+            for (var key1 in jsonkey) {
+                //console.log(jsonkey[key1]);
+                //判断jsonkey的键是不是ID，是ID，则判断是哪条数据
+                if (key1 == "id") {
+                    if (jsonkey[key1] == id) {
+                        return jsonkey;
+                    }
+                }
+            }
+        }
+    }
+
+    //获得与该ID相匹配的数据(添加功能)
+    function getDataFromJsonDataToAdd() {
+        //原JSON数据
+        var json = grid_data_detail;
+        //返回的data数据
+        var data = null;
+        for (var key in json) {
+            //获取原json（grid_data_detail）中的json数组
+            var jsonkey = json[key];//获取对应的value值
+            return jsonkey;
+        }
+    }
+
+    //将获得的数据拼接到弹框中（查看）
+    function addHtmlToViewTableView(){
+        var jsonData = getDataFromJsonData();
+        if (jsonData != null && jsonData != '' && jsonData != 'undefined') {
+            var html = '<tr>';
+            var index = 0;
+            for (var key1 in jsonData) {
+                if (index && !(index % 3)) {
+                    html += '</tr><td>' + key1 + ':</td>';
+                    html += '<td><input value="' + jsonData[key1] + '" /></td>';
+                } else {
+                    html += '<td>' + key1 + ':</td>';
+                    html += '<td><input value="' + jsonData[key1] + '" /></td>';
+                }
+                index++;
+            }
+            html+='</tr>';
+
+            $('#modal_form').modal('show');
+            $('#btn_submit').hide();
+            $("#title_yw").html("药物信息查看");
+            $("#addTab").html(html);
+            $("#addTab").find("input").attr("readonly",true);
+        }
+    }
+    //编辑功能
+    function addHtmlToViewTableEdit() {
+        var jsonData = getDataFromJsonData();
+        if (jsonData != null && jsonData != '' && jsonData != 'undefined') {
+            var html = '<tr>';
+            var index = 0;
+            for (var key1 in jsonData) {
+                if (index && !(index % 3)) {
+                    html += '</tr><td>' + key1 + ':</td>';
+                    html += '<td><input name="' + key1 + '" value="'+jsonData[key1]+'"/></td>';
+                } else {
+                    html += '<td>' + key1 + ':</td>';
+                    html += '<td><input name="' + key1 + '" value="'+jsonData[key1]+'"/></td>';
+                }
+                index++;
+            }
+            html+="</tr>";
+            $('#modal_form').modal('show');
+            $("#addTab").html(html);
+            $("#title_yw").html("药物信息编辑");
+        }
+    }
+    //添加功能
+    function addHtmlToViewTableAdd() {
+        var jsonData = getDataFromJsonDataToAdd();
+        var html = '<tr>';
+        var index = 0;
+        for (var key1 in jsonData) {
+            if (index && !(index % 3)) {
+                html += '</tr><td>' + key1 + ':</td>';
+                html += '<td><input name="' + key1 + '"/></td>';
+            } else {
+                html += '<td>' + key1 + ':</td>';
+                html += '<td><input name="' + key1 + '"/></td>';
+            }
+            index++;
+        }
+        html += '</tr>';
+        $('#modal_form').modal('show');
+        $("#addTab").html(html);
+    }
+    $('#btn_cancel').click(function () {
+        $('#modal_form').modal('hide');
+    });
+    $('#btn_submit').click(function () {
+        $('#modal_form').modal('hide');
+        alert("btnSubmit");
+    });
+
+                $('#btn_cancel').click(function () {
+                    $('#btn_cancel').html('<i class="ace-icon fa fa-times"></i>取消');
+                    $('#btn_submit').css('display','inline-block');
+                    $('#modal_form').modal('hide');
+                });
+                $('#btn_submit').click(function () {
+                    $('#modal_form').modal('hide');
+                    alert("btnSubmit");
+                });
+
+</script>
+<script type="text/javascript">
+
+    var subgrid_data =
+        [
+            {id: "1", name: "sub grid item 1", qty: 11},
+            {id: "2", name: "sub grid item 2", qty: 3},
+            {id: "3", name: "sub grid item 3", qty: 12},
+            {id: "4", name: "sub grid item 4", qty: 5},
+            {id: "5", name: "sub grid item 5", qty: 2},
+            {id: "6", name: "sub grid item 6", qty: 9},
+            {id: "7", name: "sub grid item 7", qty: 3},
+            {id: "8", name: "sub grid item 8", qty: 8}
+        ];
+    var $modal_form = $('#modal_form');
+    var $form_main = $('#form_main');
+    var $grid_table = $("#grid-table");
+    var $grid_pager = $('#grid-pager');
+    var unique_key = 'id';
+    var set_grid_btn = new SetGridBtn($grid_table, $modal_form, $form_main, grid_data, unique_key);
+    jQuery(function ($) {
+        var grid_selector = "#grid-table";
+        var pager_selector = "#grid-pager";
+
+        var parent_column = $(grid_selector).closest('[class*="col-"]');
+        //resize to fit page size
+        $(window).on('resize.jqGrid', function () {
+            $(grid_selector).jqGrid('setGridWidth', parent_column.width());
+        })
+
+        //resize on sidebar collapse/expand
+        $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
+            if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
+                //setTimeout is for webkit only to give time for DOM changes and then redraw!!!
+                setTimeout(function () {
+                    $(grid_selector).jqGrid('setGridWidth', parent_column.width());
+                }, 20);
+            }
+        })
+
+        //if your grid is inside another element, for example a tab pane, you should use its parent's width:
+        /**
+         $(window).on('resize.jqGrid', function () {
+					var parent_width = $(grid_selector).closest('.tab-pane').width();
+					$(grid_selector).jqGrid( 'setGridWidth', parent_width );
+				})
+         //and also set width when tab pane becomes visible
+         $('#myTab a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+				  if($(e.target).attr('href') == '#mygrid') {
+					var parent_width = $(grid_selector).closest('.tab-pane').width();
+					$(grid_selector).jqGrid( 'setGridWidth', parent_width );
+				  }
+				})
+         */
+
+        jQuery(grid_selector).jqGrid({
+            //direction: "rtl",
+
+            /*            //subgrid options
+                        subGrid: true,
+                        //subGridModel: [{ name : ['No','Item Name','Qty'], width : [55,200,80] }],
+                        //datatype: "xml",
+                        subGridOptions: {
+                            plusicon: "ace-icon fa fa-plus center bigger-110 blue",
+                            minusicon: "ace-icon fa fa-minus center bigger-110 blue",
+                            openicon: "ace-icon fa fa-chevron-right center orange"
+                        },
+                        //for this example we are using local data
+                        subGridRowExpanded: function (subgridDivId, rowId) {
+                            var subgridTableId = subgridDivId + "_t";
+                            $("#" + subgridDivId).html("<table id='" + subgridTableId + "'></table>");
+                            $("#" + subgridTableId).jqGrid({
+                                datatype: 'local',
+                                data: subgrid_data,
+                                colNames: ['No', 'Item Name', 'Qty'],
+                                colModel: [
+                                    {name: 'id', width: 50},
+                                    {name: 'name', width: 550},
+                                    {name: 'qty', width: 50}
+                                ]
+                            });
+                        },*/
+
+
+            data: grid_data,
+            datatype: "local",
+            height: 400,
+            colNames: [ 'id', '产品名', '剂型', '制剂规格', '药品通用名', '生产厂商简称','审核状态'],
+            colModel: [
+                {name: 'id', index: 'id', width: 60, sorttype: "int", editable: false},
+                {name: 'MEDI_NAME', index: 'MEDI_NAME', width: 90,  label: '产品名',editable: true, sorttype: "date", unformat: pickDate},
+                {name: 'DOSAGE_FORM', index: 'DOSAGE_FORM', width: 90, label: '剂型',editable: true, editoptions: {size: "20", maxlength: "30"}},
+                {
+                    name: 'DRUG_SPEC',
+                    index: 'DRUG_SPEC',
+                    width: 70,label: '制剂规格',
+                    editable: true,
+                    edittype: "text"
+                },
+                {
+                    name: 'GENERIC_NAME',
+                    index: 'GENERIC_NAME',
+                    width: 90,label: '药品通用名',
+                    editable: true,
+                    edittype: "text"
+                },
+                {
+                    name: 'MANUFACTURER_ABBR',
+                    index: 'MANUFACTURER_ABBR',
+                    width: 100,label: '生产厂商简称',
+                    sortable: false,
+                    editable: true,
+                    edittype: "text"
+                }
+                ,
+                {
+                    name: 'DATA_STATUS',
+                    index: 'DATA_STATUS',
+                    width: 100,label: '审核状态',
+                    sortable: false,
+                    editable: true,
+                    edittype: "text"
+                }/*,
+                //添加点击事件的图标
+                {
+                    name: ' ', index: ' ', align: 'center', width: 60, editable: true,
+                    formatter: function (v, i, r) {
+                        var temp = "<a href='javascript:void(0);' class='blue'  onclick='addHtmlToViewTableEdit(" + r.ID + ")'>修改</a>";
+                        return temp;
+                    },
+                }*/
+            ],
+            shrinkToFit:true,
+            autoScroll:true,
+            viewrecords: true,
+            rowNum: 10,
+            rowList: [10, 20, 30],
+            pager: pager_selector,
+            altRows: true,
+            //toppager: true,
+
+            multiselect: true,
+            //multikey: "ctrlKey",
+            multiboxonly: true,
+
+            loadComplete: function () {
+                var table = this;
+                setTimeout(function () {
+                    styleCheckbox(table);
+                    setXbarAndRnums(true, false);
+                    updateActionIcons(table);
+                    updatePagerIcons(table);
+                    enableTooltips(table);
+                }, 0);
+            },
+
+            editurl: "",//nothing is saved
+            caption: "基本药物目录的管理 -- 药物基本信息管理"
+
+            //,autowidth: true,
+
+
+            /**
+             grouping:true,
+             groupingView : {
+						 groupField : ['name'],
+						 groupDataSorted : true,
+						 plusicon : 'fa fa-chevron-down bigger-110',
+						 minusicon : 'fa fa-chevron-up bigger-110'
+					},
+             caption: "Grouping"
+             */
+
+        });
+        $(window).triggerHandler('resize.jqGrid');//trigger window resize to make the grid get the correct size
+
+
+        //enable search/filter toolbar
+        //jQuery(grid_selector).jqGrid('filterToolbar',{defaultSearch:true,stringResult:true})
+        //jQuery(grid_selector).filterToolbar({});
+        function setXbarAndRnums(is_xb, is_rn) {
+            if (is_xb) $("#grid-table").closest(".ui-jqgrid-bdiv").css({"overflow-x": "auto"});//控制底部滚动条显示隐藏 默认隐藏;hidden - auto
+           if (is_rn) $('.ui-jqgrid-labels th[id*="_cb"] .cbox').css({'margin-left': '9px'});//当行数显示出来的时候需加上，不然标题的选择框不居中
+        }
+
+        //switch element when editing inline
+        function aceSwitch(cellvalue, options, cell) {
+            setTimeout(function () {
+                $(cell).find('input[type=checkbox]')
+                    .addClass('ace ace-switch ace-switch-5')
+                    .after('<span class="lbl"></span>');
+            }, 0);
+        }
+        $('.date-picker').datepicker({
+            autoclose: true, todayHighlight: true
+        }).next().on(ace.click_event, function () {
+            $(this).prev().focus();
+        });
+        //enable datepicker
+        function pickDate(cellvalue, options, cell) {
+            setTimeout(function () {
+                $(cell).find('input[type=text]')
+                    .datepicker({format: 'yyyy-mm-dd', autoclose: true});
+            }, 0);
+        }
+
+        //navButtons
+        var jqnav = jQuery(grid_selector).jqGrid('navGrid', pager_selector,
+            { 	//navbar options
+                edit: true,
+                edittext: '编辑',
+                editicon: 'ace-icon fa fa-pencil blue',
+                add: true,
+                addtext: '添加',
+                addicon: 'ace-icon fa fa-plus-circle purple',
+                del: true,
+                deltext: '删除',
+                delicon: 'ace-icon fa fa-trash-o red',
+                search: false,
+                searchtext: '搜索',
+                searchicon: 'ace-icon fa fa-search orange',
+                refresh: true,
+                refreshtext: '刷新',
+                refreshicon: 'ace-icon fa fa-refresh green',
+                view: true,
+                viewtext: '查看',
+                viewicon: 'ace-icon fa fa-search-plus grey',
+                addfunc: function () {
+                    set_grid_btn.openAdding();
+                },
+                editfunc: function () {
+                    set_grid_btn.openUpdating();
+                },
+                viewfunc: function () {
+                    set_grid_btn.openLooking();
+                },
+                delfunc: function () {
+                    set_grid_btn.openDeleting();
+                },
+                alertwidth: 300,
+                alertcap: '<span style="color: orange">操作出错</span>',
+                alerttext: '<div style="color: red;text-align: center;font-size:large">请选择需要操作的数据行！</div>'
+            },
+            {
+                //edit record form
+                //closeAfterEdit: true,
+                //width: 700,
+                recreateForm: true,
+                beforeShowForm: function (e) {
+                    var form = $(e[0]);
+                    form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
+                    style_edit_form(form);
+                }
+            },
+            {
+                //new record form
+                //width: 700,
+                closeAfterAdd: true,
+                recreateForm: true,
+                viewPagerButtons: false,
+                beforeShowForm: function (e) {
+                    var form = $(e[0]);
+                    form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar')
+                        .wrapInner('<div class="widget-header" />')
+                    style_edit_form(form);
+                }
+            },
+            {
+                //delete record form
+                recreateForm: true,
+                beforeShowForm: function (e) {
+                    var form = $(e[0]);
+                    if (form.data('styled')) return false;
+
+                    form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
+                    style_delete_form(form);
+
+                    form.data('styled', true);
+                },
+                onClick: function (e) {
+                    //alert(1);
+                }
+            },
+            {
+                //search form
+                recreateForm: true,
+                afterShowSearch: function (e) {
+                    var form = $(e[0]);
+                    form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
+                    style_search_form(form);
+                },
+                afterRedraw: function () {
+                    style_search_filters($(this));
+                }
+                ,
+                multipleSearch: true,
+                /**
+                 multipleGroup:true,
+                 showQuery: true
+                 */
+            },
+            {
+                //view record form
+                recreateForm: true,
+                beforeShowForm: function (e) {
+                    var form = $(e[0]);
+                    form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
+                }
+            }
+        )
+       /* jqnav.navButtonAdd(pager_selector, {
+            caption: "搜索",
+            buttonicon: "ace-icon fa fa-search orange",
+            onClickButton: function () {
+                selectTable();
+            },
+            position: "first"
+        });*/
+       /*var id;
+        jqnav.navButtonAdd(pager_selector, {
+            caption: "编辑",
+            buttonicon: "ace-icon fa fa-pencil blue",
+            onClickButton: function () {
+                addHtmlToViewTableEdit();
+            },
+            position: "first"
+        });
+        jqnav.navButtonAdd(pager_selector, {
+            caption: "添加",
+            buttonicon: "ace-icon fa fa-plus-circle purple",
+            onClickButton: function () {
+                addHtmlToViewTableAdd();
+            },
+            position: "first"
+        });*/
+
+        jqnav.navButtonAdd(pager_selector, {
+            caption: "审核",
+            buttonicon: "ace-icon fa fa-pencil blue",
+            onClickButton: function () {
+                var id = getSelectRowDataId();
+                if (id != null && id != '' && id != 'undefined') {
+                    shenhe();
+                }
+            },
+            position: "last"
+        });
+
+        jqnav.navButtonAdd(pager_selector, {
+
+            caption: "上报",
+            buttonicon: "ace-icon fa fa-pencil blue",
+            onClickButton: function () {
+                var id = getSelectRowDataId();
+                if (id != null && id != '' && id != 'undefined') {
+                    shangbao();
+                }
+            },
+            position: "last"
+        });
+
+       /* jqnav.navButtonAdd(pager_selector, {
+            caption: "查看",
+            buttonicon: "ace-icon fa fa-search-plus grey",
+            onClickButton: function () {
+                addHtmlToViewTableView();
+            },
+            position: "first"
+        });*/
+        function style_edit_form(form) {
+            alert("123");
+            //enable datepicker on "sdate" field and switches for "stock" field
+            form.find('input[name=sdate]').datepicker({format: 'yyyy-mm-dd', autoclose: true})
+
+            form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
+            //don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
+            //.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
+
+
+            //update buttons classes
+            var buttons = form.next().find('.EditButton .fm-button');
+            buttons.addClass('btn btn-sm').find('[class*="-icon"]').hide();//ui-icon, s-icon
+            buttons.eq(0).addClass('btn-primary').prepend('<i class="ace-icon fa fa-check"></i>');
+            buttons.eq(1).prepend('<i class="ace-icon fa fa-times"></i>')
+
+            buttons = form.next().find('.navButton a');
+            buttons.find('.ui-icon').hide();
+            buttons.eq(0).append('<i class="ace-icon fa fa-chevron-left"></i>');
+            buttons.eq(1).append('<i class="ace-icon fa fa-chevron-right"></i>');
+        }
+
+        function style_delete_form(form) {
+            var buttons = form.next().find('.EditButton .fm-button');
+            buttons.addClass('btn btn-sm btn-white btn-round').find('[class*="-icon"]').hide();//ui-icon, s-icon
+            buttons.eq(0).addClass('btn-danger').prepend('<i class="ace-icon fa fa-trash-o"></i>');
+            buttons.eq(1).addClass('btn-default').prepend('<i class="ace-icon fa fa-times"></i>')
+        }
+
+        function style_search_filters(form) {
+            form.find('.delete-rule').val('X');
+            form.find('.add-rule').addClass('btn btn-xs btn-primary');
+            form.find('.add-group').addClass('btn btn-xs btn-success');
+            form.find('.delete-group').addClass('btn btn-xs btn-danger');
+        }
+
+        function style_search_form(form) {
+            var dialog = form.closest('.ui-jqdialog');
+            var buttons = dialog.find('.EditTable')
+            buttons.find('.EditButton a[id*="_reset"]').addClass('btn btn-sm btn-info').find('.ui-icon').attr('class', 'ace-icon fa fa-retweet');
+            buttons.find('.EditButton a[id*="_query"]').addClass('btn btn-sm btn-inverse').find('.ui-icon').attr('class', 'ace-icon fa fa-comment-o');
+            buttons.find('.EditButton a[id*="_search"]').addClass('btn btn-sm btn-purple').find('.ui-icon').attr('class', 'ace-icon fa fa-search');
+        }
+
+        function beforeDeleteCallback(e) {
+            var form = $(e[0]);
+            if (form.data('styled')) return false;
+
+            form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
+            style_delete_form(form);
+
+            form.data('styled', true);
+        }
+
+        function beforeEditCallback(e) {
+            var form = $(e[0]);
+            form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
+            style_edit_form(form);
+        }
+
+
+        //it causes some flicker when reloading or navigating grid
+        //it may be possible to have some custom formatter to do this as the grid is being created to prevent this
+        //or go back to default browser checkbox styles for the grid
+        function styleCheckbox(table) {
+            /**
+             $(table).find('input:checkbox').addClass('ace')
+             .wrap('<label />')
+             .after('<span class="lbl align-top" />')
+
+
+             $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
+             .find('input.cbox[type=checkbox]').addClass('ace')
+             .wrap('<label />').after('<span class="lbl align-top" />');
+             */
+        }
+
+
+        //unlike navButtons icons, action icons in rows seem to be hard-coded
+        //you can change them like this in here if you want
+        function updateActionIcons(table) {
+            /**
+             var replacement =
+             {
+                 'ui-ace-icon fa fa-pencil' : 'ace-icon fa fa-pencil blue',
+                 'ui-ace-icon fa fa-trash-o' : 'ace-icon fa fa-trash-o red',
+                 'ui-icon-disk' : 'ace-icon fa fa-check green',
+                 'ui-icon-cancel' : 'ace-icon fa fa-times red'
+             };
+             $(table).find('.ui-pg-div span.ui-icon').each(function(){
+						var icon = $(this);
+						var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
+						if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
+					})
+             */
+        }
+
+        //replace icons with FontAwesome icons like above
+        function updatePagerIcons(table) {
+            var replacement =
+                {
+                    'ui-icon-seek-first': 'ace-icon fa fa-angle-double-left bigger-140',
+                    'ui-icon-seek-prev': 'ace-icon fa fa-angle-left bigger-140',
+                    'ui-icon-seek-next': 'ace-icon fa fa-angle-right bigger-140',
+                    'ui-icon-seek-end': 'ace-icon fa fa-angle-double-right bigger-140'
+                };
+            $('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function () {
+                var icon = $(this);
+                var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
+
+                if ($class in replacement) icon.attr('class', 'ui-icon ' + replacement[$class]);
+            })
+        }
+
+        function enableTooltips(table) {
+            $('.navtable .ui-pg-button').tooltip({container: 'body'});
+            $(table).find('.ui-pg-div').tooltip({container: 'body'});
+        }
+
+        //var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
+
+        $(document).one('ajaxloadstart.page', function (e) {
+            $.jgrid.gridDestroy(grid_selector);
+            $('.ui-jqdialog').remove();
+        });
+    });
+    //页面加载完成之后将grid-pager_left的宽度改变
+    $(function () {
+        var clock = new Clock();
+        clock.showTime($("#i_clock"));
+        $("#grid-pager_left").css("width", '450px');
+        //console.log(123);
+    });
+</script>
+    </div>
+</div>
+</body>
+</html>

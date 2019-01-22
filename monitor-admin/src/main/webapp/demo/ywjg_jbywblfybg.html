@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>基本药物不良反应报告</title>
+    <meta name="description" content="Dynamic tables and grids using jqGrid plugin"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../font-awesome/4.5.0/css/font-awesome.min.css"/>
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="../css/jquery-ui.custom.min.css"/>
+    <link rel="stylesheet" href="../css/chosen.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-timepicker.min.css"/>
+    <link rel="stylesheet" href="../css/daterangepicker.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-colorpicker.min.css"/>
+
+    <link rel="stylesheet" href="../css/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" href="../css/ui.jqgrid.min.css"/>
+    <link rel="stylesheet" href="../css/fonts.googleapis.com.css"/>
+    <link rel="stylesheet" href="../css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style"/>
+    <link rel="stylesheet" href="../css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="../css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="../css/myform.css"/>
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="../css/ace-part2.min.css" class="ace-main-stylesheet"/>
+    <link rel="stylesheet" href="../css/ace-ie.min.css"/>
+    <![endif]-->
+    <!-- ace settings handler -->
+    <script src="../js/ace-extra.min.js"></script>
+    <!--[if lte IE 8]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default ace-save-state">
+    <div class="navbar-container ace-save-state" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+            <span class="sr-only"></span><span class="icon-bar"></span>
+            <span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <div class="navbar-header pull-left">
+            <a href="index.html" class="navbar-brand">
+                <small><i class="fa fa-leaf"></i>基本药物监管系统</small>
+            </a>
+        </div>
+
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="light-blue dropdown-modal">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <div class="i-info">
+                            <span id="i_name">南沙卫计局</span>
+                            <span id="i_clock"></span>
+                        </div>
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li><a href="#"><i class="ace-icon fa fa-power-off"></i>退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {
+        }
+    </script>
+
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">
+            try {
+                ace.settings.loadState('sidebar')
+            } catch (e) {
+            }
+        </script>
+
+        <div class="sidebar-shortcuts" id="sidebar-shortcuts"></div><!-- /.sidebar-shortcuts -->
+
+        <ul class="nav nav-list">
+            <li class="">
+                <a href="index.html">
+                    <i class="menu-icon fa fa-tachometer"></i>
+                    <span class="menu-text">基本药物监管系统</span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text">主管单位监管模块</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+
+                    <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>基本药物目录管理
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="ywjg_ywmlgl.html"><i class="menu-icon fa fa-caret-right"></i>药物目录管理</a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="ywjg_ywxxgl.html"><i class="menu-icon fa fa-caret-right"></i>药物信息管理</a>
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="ywjg_ywpsjg.html"><i class="menu-icon fa fa-caret-right"></i>药物配送监管</a>
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="">
+                        <a href="ywjg_blfyjc.html"><i class="menu-icon fa fa-caret-right"></i>不良反应监测</a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="active open">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-list"></i>
+                    <span class="menu-text">医疗机构监管模块</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="ywjg_ywdhjg.html"><i class="menu-icon fa fa-caret-right"></i>药物到货监管</a>
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="">
+                        <a href="ywjg_jbywsyjgsb.html"><i class="menu-icon fa fa-caret-right"></i>基本药物使用监管上报</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="ywjg_ykgl.html"><i class="menu-icon fa fa-caret-right"></i>药库管理</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="active">
+                        <a href="ywjg_jbywblfybg.html"><i class="menu-icon fa fa-caret-right"></i>基本药物不良反应报告</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <!--<li class="">-->
+                    <!--<a href="jbywcfj.html"><i class="menu-icon fa fa-caret-right"></i>基本药物处方集</a>-->
+                    <!--<b class="arrow"></b>-->
+                    <!--</li>-->
+                </ul>
+            </li>
+        </ul>
+
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
+               data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">基本药物监管系统</a>
+                    </li>
+                    <li>
+                        <a href="#">医疗机构监管模块</a>
+                    </li>
+                    <li class="active">基本药物不良反应报告</li>
+                </ul>
+                <div class="nav-search" id="nav-search"></div>
+            </div>
+            <!--<div class="page-header"><h1>基本药物不良反应报告</h1></div>-->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="search-grid">
+                        <span>患者姓名</span>
+                        <td><input type="text" name="medicalId"/>
+                            <span>不良反应发生时间</span>
+                            <div class="input-group input-group-date">
+                        <td><input style="width: 150px" class="date-picker" type="text" data-date-format="yyyy-mm-dd" name="createDate"/>
+                            <span class="input-group-addon"><i class="fa fa-calendar bigger-110"></i></span>
+                    </div>
+                    <span>医疗机构名称</span>
+                    <td><input type="text" name="medicalId"/>
+                        <button id="btn_search_reset" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-search"></i>搜索</button>
+                        <button id="btn_search" class="btn btn-sm btn-purple"><i class="ace-icon fa fa-reply"></i>重置</button>
+                </div>
+                <table id="grid_table"></table>
+                <div id="grid_pager"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="modal_form" class="modal" tabindex="-1">
+    <div class="modal-dialog" style="width:90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close btn-sm" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="blue bigger">基本药物不良反应--报告信息</h4>
+            </div>
+            <div class="modal-body overflow-scroll" style="max-height: 500px">
+                <form id="form_main" class="form-horizontal" role="form">
+                    <table class="table">
+                        <tr>
+                            <td>医疗机构名称</td>
+                            <td><input type="text" name="medicalName"/></td>
+                            <td>报告频率</td>
+                            <td><input type="text" name="reportFollow"/></td>
+                            <td>报告编码</td>
+                            <td><input type="text" name="reportCode"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>报告类型</td>
+                            <td><input type="text" name="reportType"/></td>
+                            <td>报告单位类别</td>
+                            <td><input type="text" name="reportUnitType"/></td>
+                            <td>报告单位描述</td>
+                            <td><input type="text" name="reportUnitDescribe"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>患者姓名</td>
+                            <td><input type="text" name="patientName"/></td>
+                            <td>性别</td>
+                            <td><input type="text" name="sex"/></td>
+                            <td>出生日期</td>
+                            <td><input name="birthday" class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>民族</td>
+                            <td><input type="text" name="nation"/></td>
+                            <td>体重</td>
+                            <td><input type="text" name="weight"/></td>
+                            <td>联系电话</td>
+                            <td><input type="text" name="telephoneNumber"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>原患疾病</td>
+                            <td><input type="text" name="diseaseName"/></td>
+                            <td>医院名称</td>
+                            <td><input type="text" name="hospital"/></td>
+                            <td>病历号/门诊号</td>
+                            <td><input type="text" name="visitingSerialNumber"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>既往药品不良反应</td>
+                            <td><input type="text" name="pastDrugs"/></td>
+                            <td>既往药品不良反应描述</td>
+                            <td><input type="text" name="pastDrugsDescribe"/></td>
+                            <td>家族药品不良反应</td>
+                            <td><input type="text" name="familyDurgs"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>家族药品不良反应描述</td>
+                            <td><input type="text" name="familyDurgsDescribe"/></td>
+                            <td>是否有吸烟史</td>
+                            <td><input type="text" name="smokingStatus"/></td>
+                            <td>是否有饮酒史</td>
+                            <td><input type="text" name="drinking"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>是否有妊娠期</td>
+                            <td><input type="text" name="gestation"/></td>
+                            <td>是否有肝病史</td>
+                            <td><input type="text" name="hepatopathy"/></td>
+                            <td>是否有肾病史</td>
+                            <td><input type="text" name="nephropathy"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>是否有过敏史</td>
+                            <td><input type="text" name="allergy"/></td>
+                            <td>是否有过敏史描述</td>
+                            <td><input type="text" name="allergyDescribe"/></td>
+                            <td>其他重要信息</td>
+                            <td><input type="text" name="otherMessage"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>不良反应事件名</td>
+                            <td><input type="text" name="adverseEventName"/></td>
+                            <td>不良反应发生时间</td>
+                            <td><input name="adverseEventDate" class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd"/></td>
+                            <td>不良反应过程描述</td>
+                            <td><input type="text" name="adverseEventDescribe"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>不良反应结果</td>
+                            <td><input type="text" name="result"/></td>
+                            <td>不良反应有后遗症描述</td>
+                            <td><input type="text" name="sequelaDescribe"/></td>
+                            <td>不良反应直接死因</td>
+                            <td><input type="text" name="causeOfDeath"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>死亡时间</td>
+                            <td><input name="timeOfDeath" class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd"/></td>
+                            <td>停药或减量后是否有减轻</td>
+                            <td><input type="text" name="lessenTheSymptoms"/></td>
+
+
+                            <td>再次使用是否再出现不良反应</td>
+                            <td><input class="col-sm-5 blue" type="text" name="useAgain"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>对患者影响</td>
+                            <td><input type="text" name="patientImpact"/></td>
+                            <td>报告人评价</td>
+                            <td><input type="text" name="reportEvaluate"/></td>
+                            <td>报告单位评价</td>
+                            <td><input type="text" name="reportUnitEvaluate"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>报告人联系电话</td>
+                            <td><input type="text" name="reportTel"/></td>
+                            <td>报告人职业</td>
+                            <td><input type="text" name="reportJob"/></td>
+                            <td>报告人职业描述</td>
+                            <td><input type="text" name="reportJobDescribe"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>报告人电子邮箱</td>
+                            <td><input type="text" name="reportEmail"/></td>
+                            <td>报告单位名称</td>
+                            <td><input type="text" name="reportUnitName"/></td>
+                            <td>报告单位联系人</td>
+                            <td><input type="text" name="reportUnitContacts"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>报告单位电话</td>
+                            <td><input type="text" name="reportUnitTel"/></td>
+                            <td>报告日期</td>
+                            <td><input name="reportDate" class="form-control date-picker" type="text" data-date-format="yyyy-mm-dd"/></td>
+                            <td>生产企业消息来源</td>
+                            <td><input type="text" name="manuFrom"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>生产企业消息来源描述</td>
+                            <td><input type="text" name="manuFromDescribe"/></td>
+                            <td>备注</td>
+                            <td><input type="text" name="remark"/></td>
+                            <td colspan="2"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button id="btn_cancel" class="btn btn-sm btn-grey"><i class="ace-icon fa fa-times"></i>取消</button>
+            <button id="btn_submit" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-check"></i>保存</button>
+        </div>
+    </div>
+</div>
+
+<div id="modal_form_drug" class="modal" tabindex="-1">
+    <div class="modal-dialog" style="width:70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close btn-sm" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="blue bigger">基本药物不良反应--药品信息</h4>
+            </div>
+            <div class="modal-body overflow-scroll" style="max-height: 550px">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table id="simple-table" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="detail-col" style="width: 100px;">查看详情</th>
+                                <th>药品id</th>
+                                <th>产品名</th>
+                                <th>通用名</th>
+                                <th>用药开始时间</th>
+                                <th>用药结束时间</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <td class="center">
+                                    <div class="action-buttons">
+                                        <a href="#" class="green bigger-140 show-details-btn" title="查看详情">
+                                            <i class="ace-icon fa fa-angle-double-down"></i><span class="sr-only">详情</span>
+                                        </a>
+                                    </div>
+                                </td>
+
+                                <td>27798</td>
+                                <td>骨刺胶囊</td>
+                                <td>骨刺</td>
+                                <td>2018-02-11</td>
+                                <td>2018-04-11</td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td colspan="8">
+                                    <div class="table-detail">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <form id="form_drug" class="form-horizontal" role="form">
+                                                    <input name="id" hidden>
+                                                    <table class="table">
+                                                        <tr>
+                                                            <td>药品id</td>
+                                                            <td><input type="text" name="drugId" value="27798"/></td>
+                                                            <td>批准文号</td>
+                                                            <td><input type="text" name="approvalNumber" value="国药准字Z20050179"/></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>产品名</td>
+                                                            <td><input type="text" name="mediName" value="骨刺胶囊"/></td>
+                                                            <td>通用名</td>
+                                                            <td><input type="text" name="currencyName" value="骨刺"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>生产厂家</td>
+                                                            <td><input type="text" name="manufacturer" value="浙江维康药业股份有限公司"/></td>
+                                                            <td>用法用量</td>
+                                                            <td><input type="text" name="use" value="一日三次一次一粒"/></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>用药开始时间</td>
+                                                            <td><input type="text" name="beginDate" value="2018-02-11" class="form-control date-picker" data-date-format="yyyy-mm-dd"/></td>
+                                                            <td>用药结束时间</td>
+                                                            <td><input type="text" name="endDate" value="2018-04-11" class="form-control date-picker" data-date-format="yyyy-mm-dd"/></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>用药原因</td>
+                                                            <td><input type="text" name="useReason" value="骨折，韧带拉伤"/></td>
+                                                            <td>药品类型</td>
+                                                            <td><input type="text" name="drugType" value="骨伤科用药"/></td>
+                                                        </tr>
+
+                                                    </table>
+
+                                                    <div class="line-div">
+                                                        <button class="btn btn-sm btn-purple btn-white btn-round" type="button">
+                                                            <i class="ace-icon fa fa-floppy-o bigger-125"></i>保存
+                                                        </button>
+                                                        <button class="btn btn-sm btn-pink btn-white btn-round" type="button">
+                                                            <i class="ace-icon fa fa-trash-o bigger-125"></i>删除
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="center">
+                                    <div class="action-buttons">
+                                        <a href="#" class="green bigger-140 show-details-btn" title="查看详情">
+                                            <i class="ace-icon fa fa-angle-double-down"></i><span class="sr-only">详情</span>
+                                        </a>
+                                    </div>
+                                </td>
+
+                                <td>27798</td>
+                                <td>骨刺胶囊</td>
+                                <td>骨刺</td>
+                                <td>2018-05-11</td>
+                                <td>2018-07-11</td>
+                            </tr>
+                            <tr class="detail-row">
+                                <td colspan="8">
+                                    <div class="table-detail">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <form id="form_drug2" class="form-horizontal" role="form">
+                                                    <input name="id" hidden>
+                                                    <table class="table">
+                                                        <tr>
+                                                            <td>药品id</td>
+                                                            <td><input type="text" name="drugId" value="27798"/></td>
+                                                            <td>批准文号</td>
+                                                            <td><input type="text" name="approvalNumber" value="国药准字Z20050179"/></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>产品名</td>
+                                                            <td><input type="text" name="mediName" value="骨刺胶囊"/></td>
+                                                            <td>通用名</td>
+                                                            <td><input type="text" name="currencyName" value="骨刺"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>生产厂家</td>
+                                                            <td><input type="text" name="manufacturer" value="浙江维康药业股份有限公司"/></td>
+                                                            <td>用法用量</td>
+                                                            <td><input type="text" name="use" value="一日三次一次一粒"/></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>用药开始时间</td>
+                                                            <td><input type="text" name="beginDate" value="2018-05-11" class="form-control date-picker" data-date-format="yyyy-mm-dd"/></td>
+                                                            <td>用药结束时间</td>
+                                                            <td><input type="text" name="endDate" value="2018-07-11" class="form-control date-picker" data-date-format="yyyy-mm-dd"/></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>用药原因</td>
+                                                            <td><input type="text" name="useReason" value="骨折，韧带拉伤"/></td>
+                                                            <td>药品类型</td>
+                                                            <td><input type="text" name="drugType" value="骨伤科用药"/></td>
+                                                        </tr>
+
+                                                    </table>
+
+                                                    <div class="line-div">
+                                                        <button class="btn btn-sm btn-purple btn-white btn-round" type="button">
+                                                            <i class="ace-icon fa fa-floppy-o bigger-125"></i>保存
+                                                        </button>
+                                                        <button class="btn btn-sm btn-pink btn-white btn-round" type="button">
+                                                            <i class="ace-icon fa fa-trash-o bigger-125"></i>删除
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="footer-inner">
+        <div class="footer-content"></div>
+    </div>
+</div>
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse"><i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i></a>
+
+<!--[if !IE]> -->
+<script src="../js/jquery-2.1.4.min.js"></script>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<!-- <![endif]-->
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='../js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+
+<script src="../js/jquery-ui.custom.min.js"></script>
+<script src="../js/jquery.ui.touch-punch.min.js"></script>
+<script src="../js/chosen.jquery.min.js"></script>
+<script src="../js/spinbox.min.js"></script>
+<script src="../js/bootstrap-timepicker.min.js"></script>
+<script src="../js/moment.min.js"></script>
+<script src="../js/daterangepicker.min.js"></script>
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/bootstrap-colorpicker.min.js"></script>
+<script src="../js/jquery.knob.min.js"></script>
+<script src="../js/autosize.min.js"></script>
+<script src="../js/jquery.inputlimiter.min.js"></script>
+<script src="../js/jquery.maskedinput.min.js"></script>
+<script src="../js/bootstrap-tag.min.js"></script>
+<script src="../js/myform.js"></script>
+
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-datepicker.min.js"></script>
+<script src="../js/jquery.jqGrid.min.js"></script>
+<script src="../js/grid.locale-en.js"></script>
+<script src="../js/ace-elements.min.js"></script>
+<script src="../js/ace.min.js"></script>
+
+<script type="text/javascript">
+    var grid_data = [
+        {
+            id: "2018071100010001", medicalId: "zzy001", medicalName: "广州新海医院", reportFollow: "首次报告", reportCode: "201807110011", reportType: "新的", reportUnitType: "医疗机构",
+            reportUnitDescribe: "广州新海医院", patientName: "周安", sex: "男", birthday: "2000-12-12", nation: "汉族", weight: "45kg", telephoneNumber: "18809099987", diseaseName: "无",
+            hospital: "广州新海人民医院", visitingSerialNumber: "201807110001", pastDrugs: "无", pastDrugsDescribe: "无", familyDurgs: "无", familyDurgsDescribe: "无", smokingStatus: "无",
+            drinking: "偶尔", gestation: "无", hepatopathy: "无", nephropathy: "无", allergy: "无", allergyDescribe: "无", otherMessage: "无", adverseEventName: "药物过敏", adverseEventDate: "2016-12-12",
+            adverseEventDescribe: "吃药过敏了", result: "好转", sequelaDescribe: "无", causeOfDeath: "无", timeOfDeath: "", lessenTheSymptoms: "是", useAgain: "未再使用", patientImpact: "不明显", reportEvaluate: "可能",
+            reportUnitEvaluate: "肯定", reportTel: "18888900087", reportJob: "药师", reportJobDescribe: "广州新海人民医院骨科部", reportEmail: "123@123.com", reportUnitName: "广州新海医院", reportUnitContacts: "周生生",
+            reportUnitTel: "0755-89008976", reportDate: "2017-11-11", manuFrom: "无", manuFromDescribe: "无", remark: "无"
+        },
+        {
+            id: "2018071100010002", medicalId: "zzy001", medicalName: "广州新海医院", reportFollow: "首次报告", reportCode: "201807110011", reportType: "新的", reportUnitType: "医疗机构",
+            reportUnitDescribe: "广州新海医院", patientName: "周西安", sex: "男", birthday: "1998-02-12", nation: "汉族", weight: "45kg", telephoneNumber: "18809099987", diseaseName: "无",
+            hospital: "广州新海人民医院", visitingSerialNumber: "201807110001", pastDrugs: "无", pastDrugsDescribe: "无", familyDurgs: "无", familyDurgsDescribe: "无", smokingStatus: "无",
+            drinking: "偶尔", gestation: "无", hepatopathy: "无", nephropathy: "无", allergy: "无", allergyDescribe: "无", otherMessage: "无", adverseEventName: "药物过敏", adverseEventDate: "2016-12-12",
+            adverseEventDescribe: "吃药过敏了", result: "好转", sequelaDescribe: "无", causeOfDeath: "无", timeOfDeath: "", lessenTheSymptoms: "是", useAgain: "未再使用", patientImpact: "不明显", reportEvaluate: "可能",
+            reportUnitEvaluate: "肯定", reportTel: "18888900087", reportJob: "药师", reportJobDescribe: "广州新海人民医院骨科部", reportEmail: "123@123.com", reportUnitName: "广州新海医院", reportUnitContacts: "周生生",
+            reportUnitTel: "0755-89008976", reportDate: "2017-01-11", manuFrom: "无", manuFromDescribe: "无", remark: "无"
+        },
+        {
+            id: "2018071100010003", medicalId: "zzy001", medicalName: "广州新海医院", reportFollow: "首次报告", reportCode: "201807110011", reportType: "新的", reportUnitType: "医疗机构",
+            reportUnitDescribe: "广州新海医院", patientName: "周心", sex: "男", birthday: "1996-11-12", nation: "汉族", weight: "45kg", telephoneNumber: "18809099987", diseaseName: "无",
+            hospital: "广州新海人民医院", visitingSerialNumber: "201807110001", pastDrugs: "无", pastDrugsDescribe: "无", familyDurgs: "无", familyDurgsDescribe: "无", smokingStatus: "无",
+            drinking: "偶尔", gestation: "无", hepatopathy: "无", nephropathy: "无", allergy: "无", allergyDescribe: "无", otherMessage: "无", adverseEventName: "药物过敏", adverseEventDate: "2016-12-12",
+            adverseEventDescribe: "吃药过敏了", result: "好转", sequelaDescribe: "无", causeOfDeath: "无", timeOfDeath: "", lessenTheSymptoms: "是", useAgain: "未再使用", patientImpact: "不明显", reportEvaluate: "可能",
+            reportUnitEvaluate: "肯定", reportTel: "18888900087", reportJob: "药师", reportJobDescribe: "广州新海人民医院骨科部", reportEmail: "123@123.com", reportUnitName: "广州新海医院", reportUnitContacts: "周生生",
+            reportUnitTel: "0755-89008976", reportDate: "2016-11-11", manuFrom: "无", manuFromDescribe: "无", remark: "无"
+        },
+        {
+            id: "2018071100010004", medicalId: "zzy001", medicalName: "广州新海医院", reportFollow: "首次报告", reportCode: "201807110011", reportType: "新的", reportUnitType: "医疗机构",
+            reportUnitDescribe: "广州新海医院", patientName: "周先洗", sex: "男", birthday: "1999-10-12", nation: "汉族", weight: "45kg", telephoneNumber: "18809099987", diseaseName: "无",
+            hospital: "广州新海人民医院", visitingSerialNumber: "201807110001", pastDrugs: "无", pastDrugsDescribe: "无", familyDurgs: "无", familyDurgsDescribe: "无", smokingStatus: "无",
+            drinking: "偶尔", gestation: "无", hepatopathy: "无", nephropathy: "无", allergy: "无", allergyDescribe: "无", otherMessage: "无", adverseEventName: "药物过敏", adverseEventDate: "2016-12-12",
+            adverseEventDescribe: "吃药过敏了", result: "好转", sequelaDescribe: "无", causeOfDeath: "无", timeOfDeath: "", lessenTheSymptoms: "是", useAgain: "未再使用", patientImpact: "不明显", reportEvaluate: "可能",
+            reportUnitEvaluate: "肯定", reportTel: "18888900087", reportJob: "药师", reportJobDescribe: "广州新海人民医院骨科部", reportEmail: "123@123.com", reportUnitName: "广州新海医院", reportUnitContacts: "周生生",
+            reportUnitTel: "0755-89008976", reportDate: "2016-07-11", manuFrom: "无", manuFromDescribe: "无", remark: "无"
+        },
+    ];
+    var grid_drug_data = [
+        {
+            id: "2018071100010101",
+            adverseEventId: "2018071100010001",
+            drugId: "20180711001001",
+            approvalNumber: "20180711010201",
+            mediName: "阿莫西林",
+            currencyName: "阿莫西林",
+            manufacturer: "中药六厂",
+            use: "一日三次一次10g",
+            beginDate: "2018-05-11",
+            endDate: "2018-07-11",
+            useReason: "有病",
+            drugType: "西药"
+        },
+        {
+            id: "2018071100010102",
+            adverseEventId: "2018071100010001",
+            drugId: "20180711001002",
+            approvalNumber: "20180711010202",
+            mediName: "阿莫西林",
+            currencyName: "阿莫西林",
+            manufacturer: "中药六厂",
+            use: "一日三次一次10g",
+            beginDate: "2018-05-11",
+            endDate: "2018-07-11",
+            useReason: "有病",
+            drugType: "西药"
+        },
+        {
+            id: "2018071100010103",
+            adverseEventId: "2018071100010003",
+            drugId: "20180711001003",
+            approvalNumber: "20180711010203",
+            mediName: "阿莫西林",
+            currencyName: "阿莫西林",
+            manufacturer: "中药六厂",
+            use: "一日三次一次10g",
+            beginDate: "2018-05-11",
+            endDate: "2018-07-11",
+            useReason: "有病",
+            drugType: "西药"
+        },
+        {
+            id: "2018071100010104",
+            adverseEventId: "2018071100010004",
+            drugId: "20180711001004",
+            approvalNumber: "20180711010204",
+            mediName: "阿莫西林",
+            currencyName: "阿莫西林",
+            manufacturer: "中药六厂",
+            use: "一日三次一次10g",
+            beginDate: "2018-05-11",
+            endDate: "2018-07-11",
+            useReason: "有病",
+            drugType: "西药"
+        },
+        {
+            id: "2018071100010105",
+            adverseEventId: "2018071100010004",
+            drugId: "20180711001005",
+            approvalNumber: "20180711010205",
+            mediName: "阿莫西林",
+            currencyName: "阿莫西林",
+            manufacturer: "中药六厂",
+            use: "一日三次一次10g",
+            beginDate: "2018-05-11",
+            endDate: "2018-07-11",
+            useReason: "有病",
+            drugType: "西药"
+        },
+        {
+            id: "2018071100010106",
+            adverseEventId: "2018071100010004",
+            drugId: "20180711001006",
+            approvalNumber: "20180711010206",
+            mediName: "阿莫西林",
+            currencyName: "阿莫西林",
+            manufacturer: "中药六厂",
+            use: "一日三次一次10g",
+            beginDate: "2018-05-11",
+            endDate: "2018-07-11",
+            useReason: "有病",
+            drugType: "西药"
+        },
+        {
+            id: "2018071100010107",
+            adverseEventId: "2018071100010004",
+            drugId: "20180711001007",
+            approvalNumber: "20180711010213",
+            mediName: "阿莫西林",
+            currencyName: "阿莫西林",
+            manufacturer: "中药六厂",
+            use: "一日三次一次10g",
+            beginDate: "2018-05-11",
+            endDate: "2018-07-11",
+            useReason: "有病",
+            drugType: "西药"
+        },
+    ];
+
+    var $modal_form = $('#modal_form');
+    var $modal_form_drug = $('#modal_form_drug');
+    var $form_main = $('#form_main');
+    var $grid_table = $("#grid_table");
+    var $grid_pager = $('#grid_pager');
+
+    var unique_key = 'id';
+    var set_grid_btn = new SetGridBtn($grid_table, $modal_form, $form_main, grid_data, unique_key);
+
+    jQuery(function ($) {
+        var parent_column = $grid_table.closest('[class*="col-"]');
+        $(window).on('resize.jqGrid', function () {
+            $grid_table.jqGrid('setGridWidth', parent_column.width());
+        });
+        $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
+            if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
+                setTimeout(function () {
+                    $grid_table.jqGrid('setGridWidth', parent_column.width());
+                }, 20);
+            }
+        });
+        $(document).one('ajaxloadstart.page', function (e) {
+            $.jgrid.gridDestroy("#grid_table");
+            $('.ui-jqdialog').remove();
+        });
+        if (!ace.vars['touch']) {
+            $('.chosen-select').chosen({allow_single_deselect: true});
+            //resize the chosen on window resize
+
+            $(window).off('resize.chosen').on('resize.chosen', function () {
+                $('.chosen-select').each(function () {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+            }).trigger('resize.chosen');
+            //resize chosen on sidebar collapse/expand
+            $(document).on('settings.ace.chosen', function (e, event_name, event_val) {
+                if (event_name != 'sidebar_collapsed') return;
+                $('.chosen-select').each(function () {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+            });
+            $('#chosen-multiple-style .btn').on('click', function (e) {
+                var target = $(this).find('input[type=radio]');
+                var which = parseInt(target.val());
+                if (which == 2) $('#form-field-select-4').addClass('tag-input-style');
+                else $('#form-field-select-4').removeClass('tag-input-style');
+            });
+        }
+
+        $grid_table.jqGrid({
+            caption: "基本药物不良反应报告信息",
+            // url: '',
+            data: grid_data,
+            datatype: "local",
+            height: 350,
+            rownumbers: true,
+            //rownumWidth: 20,
+            multiselect: true,
+            multiboxonly: true,
+            //multikey: "ctrlKey",
+            autowidth: true,
+            shrinkToFit: true,
+            autoScroll: false,
+            editurl: "./dummy.php",//nothing is saved
+            pager: "#grid_pager",
+            rowNum: 10,
+            rowList: [10, 20, 30],
+            viewrecords: true,
+            altRows: true,
+            toppager: false,
+            colModel: [
+                {name: 'patientName', index: 'patientName', label: '患者姓名', width: 100, sortable: true, editable: false},
+                {name: 'sex', index: 'sex', label: '性别', width: 100, sortable: true, editable: false},
+                {name: 'birthday', index: 'birthday', label: '出生日期', width: 100, sortable: true, editable: false},
+                {name: 'reportFollow', index: 'reportFollow', label: '报告频率', width: 100, sortable: true, editable: true},
+                {name: 'reportType', index: 'reportType', label: '报告类型', width: 100, sortable: true, editable: true},
+                {name: 'reportDate', index: 'reportDate', label: '报告日期', width: 100, sortable: true, editable: true},
+                // {name: 'reportUnitName', index: 'reportUnitName', label: '报告单位名称', width: 200, sortable: true, editable: true},
+                // {name: 'medicalName', index: 'medicalName', label: '医疗机构名称', width: 200, sortable: true, editable: true},
+                // {name: 'hospital', index: 'hospital', label: '医院名称', width: 200, sortable: true, editable: true},
+                {name: 'visitingSerialNumber', index: 'visitingSerialNumber', label: '病历号/门诊号', width: 150, sortable: true, editable: true},
+                {
+                    name: '', index: '', width: 100, align: 'center',
+                    formatter: function (v, i, r) {
+                        return '<div class="hidden-sm hidden-xs action-buttons"><a class="blue" onclick="lookFormDrug(' + r.id + ')" title="查看药品详细信息">查看药品信息</a></div>'
+                    }
+                }
+            ],
+            loadComplete: function () {
+                updatePagerIcons(this);
+                setXbarAndRnums(false, true);
+            },
+            ondblClickRow: function () {
+                set_grid_btn.openLooking();
+            },
+            grouping: false,
+            groupingView: {groupField: ['medicalId'], groupDataSorted: true, plusicon: 'fa fa-chevron-down bigger-110', minusicon: 'fa fa-chevron-up bigger-110'}
+        });
+        $grid_table.jqGrid('navGrid', "#grid_pager", {
+            edit: true,
+            edittext: '编辑',
+            editicon: 'ace-icon fa fa-pencil blue',
+            add: true,
+            addtext: '添加',
+            addicon: 'ace-icon fa fa-plus-circle purple',
+            del: true,
+            deltext: '删除',
+            delicon: 'ace-icon fa fa-trash-o red',
+            search: false,
+            searchtext: '搜索',
+            searchicon: 'ace-icon fa fa-search orange',
+            refresh: true,
+            refreshtext: '刷新',
+            refreshicon: 'ace-icon fa fa-refresh green',
+            view: true,
+            viewtext: '查看基本信息',
+            viewicon: 'ace-icon fa fa-search-plus grey',
+            position: 'left',
+            addfunc: function () {
+                set_grid_btn.openAdding();
+            },
+            editfunc: function () {
+                set_grid_btn.openUpdating();
+            },
+            viewfunc: function () {
+                set_grid_btn.openLooking();
+            },
+            delfunc: function () {
+                set_grid_btn.openDeleting();
+            },
+            alertwidth: 300,
+            alertcap: '<span style="color: orange">操作出错</span>',
+            alerttext: '<div style="color: red;text-align: center;font-size:large">请选择需要操作的数据行！</div>'
+        });
+
+        function updatePagerIcons(table) {
+            var replacement = {
+                'ui-icon-seek-first': 'ace-icon fa fa-angle-double-left bigger-140',
+                'ui-icon-seek-prev': 'ace-icon fa fa-angle-left bigger-140',
+                'ui-icon-seek-next': 'ace-icon fa fa-angle-right bigger-140',
+                'ui-icon-seek-end': 'ace-icon fa fa-angle-double-right bigger-140'
+            };
+            $('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function () {
+                var icon = $(this);
+                var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
+                if ($class in replacement) icon.attr('class', 'ui-icon ' + replacement[$class]);
+            })
+        }
+
+        function setXbarAndRnums(is_xb, is_rn) {
+            if (is_xb) $grid_table.closest(".ui-jqgrid-bdiv").css({"overflow-x": "auto"});//控制底部滚动条显示隐藏 默认隐藏;hidden - auto
+            if (is_rn) $('.ui-jqgrid-labels th[id*="_cb"] .cbox').css({'margin-left': '9px'});//当行数显示出来的时候需加上，不然标题的选择框不居中
+
+            $('.ui-jqgrid tr.jqgrow td').css({'white-space': 'normal', 'height': 'auto'});//如果当前列宽度不够，列内容是否可以换行显示
+        }
+
+        $(window).triggerHandler('resize.jqGrid');
+    });
+
+    var lookFormDrug = function (r_id) {
+        set_grid_btn.lookForm($grid_table, $modal_form_drug, r_id, $form_main, grid_data, 'id');
+        /*var drug_arr = new Array();
+        if (!r_id) r_id = $grid_table.jqGrid("getGridParam", "selrow");
+        for (var i = 0; i < grid_drug_data.length; i++) {
+            var data = grid_drug_data[i];
+            if (data['adverseEventId'] == r_id) {
+                drug_arr.push(data);
+
+                var mf = new ModalForm();
+                mf.fillModalForm(fm, data);
+                fm.find('input,textarea,select').attr('disabled', true);
+                g_mf.modal({backdrop: 'static', keyboard: false, show: true});
+            }
+        }*/
+
+
+    };
+
+    $('.date-picker').datepicker({
+        autoclose: true, todayHighlight: true
+    }).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+    });
+
+    $('.show-details-btn').on('click', function (e) {
+        e.preventDefault();
+        $(this).closest('tr').next().toggleClass('open');
+        $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+    });
+
+    $(function () {
+        var clock = new Clock();
+        clock.showTime($("#i_clock"));
+        $modal_form.on('show.bs.modal', function () {
+            if (!ace.vars['touch']) {
+                var _chose_container = $(this).find('.chosen-container');
+                var _chosen_select = $(this).find('.chosen-select');
+                _chose_container.css('width', '');
+                _chose_container.each(function () {
+                    $(this).find('a:first-child').css({'width': '100%', 'color': '#478FCA'});
+                    $(this).find('.chosen-drop').css({'width': '100%'});
+                    $(this).find('.chosen-search input').css({'width': '100%'});
+                });
+            }
+        });
+        $("#grid_pager_left").css("width", '450px');
+
+        $('#btn_cancel').click(function () {
+            $modal_form.modal('hide');
+        });
+        $('#btn_submit').click(function () {
+            //alert("btnSubmit")
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>医院药库管理</title>
+    <meta name="description" content="Dynamic tables and grids using jqGrid plugin"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../font-awesome/4.5.0/css/font-awesome.min.css"/>
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="../css/jquery-ui.custom.min.css"/>
+    <link rel="stylesheet" href="../css/chosen.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-timepicker.min.css"/>
+    <link rel="stylesheet" href="../css/daterangepicker.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-colorpicker.min.css"/>
+
+    <link rel="stylesheet" href="../css/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" href="../css/ui.jqgrid.min.css"/>
+    <link rel="stylesheet" href="../css/fonts.googleapis.com.css"/>
+    <link rel="stylesheet" href="../css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style"/>
+    <link rel="stylesheet" href="../css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="../css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="../css/myform.css"/>
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="../css/ace-part2.min.css" class="ace-main-stylesheet"/>
+    <link rel="stylesheet" href="../css/ace-ie.min.css"/>
+    <![endif]-->
+    <!-- ace settings handler -->
+    <script src="../js/ace-extra.min.js"></script>
+    <!--[if lte IE 8]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="no-skin">
+<div id="navbar" class="navbar navbar-default ace-save-state">
+    <div class="navbar-container ace-save-state" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+            <span class="sr-only"></span><span class="icon-bar"></span>
+            <span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <div class="navbar-header pull-left">
+            <a href="index.html" class="navbar-brand">
+                <small><i class="fa fa-leaf"></i>基本药物监管系统</small>
+            </a>
+        </div>
+
+        <div class="navbar-buttons navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="light-blue dropdown-modal">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <div class="i-info">
+                            <span id="i_name">南沙卫计局</span>
+                            <span id="i_clock"></span>
+                        </div>
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
+
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li><a href="#"><i class="ace-icon fa fa-power-off"></i>退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {
+        }
+    </script>
+
+    <div id="sidebar" class="sidebar responsive ace-save-state">
+        <script type="text/javascript">
+            try {
+                ace.settings.loadState('sidebar')
+            } catch (e) {
+            }
+        </script>
+
+        <div class="sidebar-shortcuts" id="sidebar-shortcuts"></div><!-- /.sidebar-shortcuts -->
+
+        <ul class="nav nav-list">
+            <li class="">
+                <a href="index.html">
+                    <i class="menu-icon fa fa-tachometer"></i>
+                    <span class="menu-text">基本药物监管系统</span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text">主管单位监管模块</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+
+                    <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-caret-right"></i>基本药物目录管理
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+                        <b class="arrow"></b>
+
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="ywmlgl.html"><i class="menu-icon fa fa-caret-right"></i>药物目录管理</a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="ywxxgl.html"><i class="menu-icon fa fa-caret-right"></i>药物信息管理</a>
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="ywpsjg.html"><i class="menu-icon fa fa-caret-right"></i>药物配送监管</a>
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="">
+                        <a href="blfyjc.html"><i class="menu-icon fa fa-caret-right"></i>不良反应监测</a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="active open">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-list"></i>
+                    <span class="menu-text">医疗机构监管模块</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="ywjg_ywdhjg.html"><i class="menu-icon fa fa-caret-right"></i>药物到货监管</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="ywjg_jbywsyjgsb.html"><i class="menu-icon fa fa-caret-right"></i>基本药物使用监管上报</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="active">
+                        <a href="ywjg_ykgl.html"><i class="menu-icon fa fa-caret-right"></i>药库管理</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="ywjg_jbywblfybg.html"><i class="menu-icon fa fa-caret-right"></i>基本药物不良反应报告</a>
+                        <b class="arrow"></b>
+                    </li>
+                    <!--<li class="">-->
+                    <!--<a href="jbywcfj.html"><i class="menu-icon fa fa-caret-right"></i>基本药物处方集</a>-->
+                    <!--<b class="arrow"></b>-->
+                    <!--</li>-->
+                </ul>
+            </li>
+        </ul>
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
+               data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">基本药物监管系统</a>
+                    </li>
+                    <li>
+                        <a href="#">医疗机构监管模块</a>
+                    </li>
+                    <li class="active">药库管理</li>
+                </ul>
+                <div class="nav-search" id="nav-search"></div>
+            </div>
+            <!--<div class="page-header"><h1>药库管理</h1></div>-->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="search-grid">
+                        <span>药库编号</span><input type="text" name="medicalId"/>
+                        <span>订单明细编号</span><input type="text" name="medicalId"/>
+                        <span>医疗机构名称</span><input type="text" name="medicalId"/>
+                        <button id="btn_search_reset" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-search"></i>搜索</button>
+                        <button id="btn_search" class="btn btn-sm btn-purple"><i class="ace-icon fa fa-reply"></i>重置</button>
+                    </div>
+                    <table class="grid-scl-bottom" id="grid_table"></table>
+                    <div id="grid_pager"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal_form" class="modal" tabindex="-1">
+    <div class="modal-dialog" style="width:70%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close btn-sm" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="blue bigger">药库管理信息</h4>
+            </div>
+
+            <div class="modal-body">
+                <form id="form_main" role="form">
+                    <table class="table">
+                        <tr>
+                            <td>医疗机构名称:</td>
+                            <td><input name="medicalName"/></td>
+                            <td>药库编号:</td>
+                            <td><input name="warehouseCode"/></td>
+                            <td>药库名:</td>
+                            <td><input name="warehouseName"/></td>
+                        </tr>
+                        <tr>
+                            <td>配送企业:</td>
+                            <td><input name="dispatchName"/></td>
+                            <td>确认时间:</td>
+                            <td><input name="factDtime"/></td>
+                            <td>变动数量:</td>
+                            <td><input name="changeNumber"/></td>
+                        </tr>
+                        <tr>
+                            <td>药品id</td>
+                            <td><input type="text" name="drugId"/></td>
+                            <td>药品名称:</td>
+                            <td><input name="drugName"/></td>
+                            <td>产品英文名</td>
+                            <td><input type="text" name="mediNameEn"/></td>
+                        </tr>
+                        <tr>
+                            <td>批准文号:</td>
+                            <td><input name="approvalNumber"/></td>
+                            <td>药品通用名</td>
+                            <td><input type="text" name="genericName"/></td>
+                            <td>商品名</td>
+                            <td><input type="text" name="comName"/></td>
+                        </tr>
+                        <tr>
+                            <td>生产厂商简称</td>
+                            <td><input type="text" name="manufacturerAbbr"/></td>
+                            <td>生产厂商全称</td>
+                            <td><input type="text" name="manufacturer"/></td>
+                            <td>生产厂商曾用名</td>
+                            <td><input type="text" name="manufacturerOld"/></td>
+                        </tr>
+                        <tr>
+                            <td>剂型:</td>
+                            <td><input name="dosageForm"/></td>
+                            <td>制剂规格:</td>
+                            <td><input name="drugSpec"/></td>
+                            <td>包装规格:</td>
+                            <td><input name="packingSpecifications"/></td>
+                        </tr>
+                        <tr>
+                            <td>包装单位:</td>
+                            <td><input name="packagingUnit"/></td>
+                            <td>最小使用单位:</td>
+                            <td><input name="minUseUnit"/></td>
+                            <td>类型:</td>
+                            <td><input name="type"/></td>
+                        </tr>
+                        <tr>
+                            <td>产品编码</td>
+                            <td><input type="text" name="code"/></td>
+                            <td>处方</td>
+                            <td><input type="text" name="descript"/></td>
+                            <td>包装转换比</td>
+                            <td><input type="text" name="convertPer"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button id="btn_cancel" class="btn btn-sm btn-grey"><i class="ace-icon fa fa-times"></i>取消</button>
+            <button id="btn_submit" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-check"></i>保存</button>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-inner">
+        <div class="footer-content">
+        </div>
+    </div>
+</div>
+
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+
+<!--[if !IE]> -->
+<script src="../js/jquery-2.1.4.min.js"></script>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<!-- <![endif]-->
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='../js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+
+<script src="../js/jquery-ui.custom.min.js"></script>
+<script src="../js/jquery.ui.touch-punch.min.js"></script>
+<script src="../js/chosen.jquery.min.js"></script>
+<script src="../js/spinbox.min.js"></script>
+<script src="../js/bootstrap-timepicker.min.js"></script>
+<script src="../js/moment.min.js"></script>
+<script src="../js/daterangepicker.min.js"></script>
+<script src="../js/bootstrap-datetimepicker.min.js"></script>
+<script src="../js/bootstrap-colorpicker.min.js"></script>
+<script src="../js/jquery.knob.min.js"></script>
+<script src="../js/autosize.min.js"></script>
+<script src="../js/jquery.inputlimiter.min.js"></script>
+<script src="../js/jquery.maskedinput.min.js"></script>
+<script src="../js/bootstrap-tag.min.js"></script>
+<script src="../js/myform.js"></script>
+
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-datepicker.min.js"></script>
+<script src="../js/jquery.jqGrid.min.js"></script>
+<script src="../js/grid.locale-en.js"></script>
+<script src="../js/ace-elements.min.js"></script>
+<script src="../js/ace.min.js"></script>
+
+<script type="text/javascript">
+    var grid_data = [
+        {
+            id: "20180711001001", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "＋ 1600",
+            dispatchName: "广东康美新澳医药有限公司", orderNumber: "1600", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2016-07-11 11:30:32'
+        },
+        {
+            id: "20180711001002", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "－ 800",
+            dispatchName: "", orderNumber: "800", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2016-11-11 11:30:32'
+        },
+        {
+            id: "20180711001003", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "＋ 1200",
+            dispatchName: "广东康美新澳医药有限公司", orderNumber: "1600", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2017-07-11 11:30:32'
+        },
+        {
+            id: "20180711001004", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "＋ 1000",
+            dispatchName: "广东康美新澳医药有限公司", orderNumber: "1600", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2017-07-21 11:30:32'
+        },
+        {
+            id: "20180711001005", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "＋ 800",
+            dispatchName: "广东康美新澳医药有限公司", orderNumber: "1600", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2018-01-11 11:30:32'
+        },
+        {
+            id: "20180711001006", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "－ 1600",
+            dispatchName: "", orderNumber: "800", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2018-07-11 11:30:32'
+        },
+        {
+            id: "20180711001007", warehouseCode: "20180711001", warehouseName: "广州新海人民医院药库", medicalName: "广州新海人民医院", changeNumber: "－ 1000",
+            dispatchName: "", orderNumber: "800", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2017-07-11 11:30:32'
+        },
+        {
+            id: "20180711001008", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "－ 2000",
+            dispatchName: "", orderNumber: "800", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2017-07-11 11:30:32'
+        },
+        {
+            id: "20180711001009", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "＋ 850",
+            dispatchName: "广东康美新澳医药有限公司", orderNumber: "1600", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2018-01-11 11:30:32'
+        },
+        {
+            id: "20180711001010", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "＋ 1100",
+            dispatchName: "广东康美新澳医药有限公司", orderNumber: "1600", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2018-02-11 11:30:32'
+        },
+        {
+            id: "20180711001011", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "＋ 1300",
+            dispatchName: "广东康美新澳医药有限公司", orderNumber: "1600", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2018-03-11 11:30:32'
+        },
+        {
+            id: "20180711001012", warehouseCode: "20180711001", warehouseName: "广州新海医院基药库", medicalName: "广州新海医院", changeNumber: "＋ 1000",
+            dispatchName: "广东康美新澳医药有限公司", orderNumber: "1600", matchPrice: "1000", drugId: "27798", genericName: "骨刺", code: "Z-G03AA-G0249-110101-0101-31-01-SBT144-01",
+            descript: "昆布、骨碎补、党参、桂枝、威灵仙、牡蛎(煅),梗伸叶、鸡血、附片、制川乌、制草乌、延胡索(制)、白芍、三七、乌钱子粉.", convertPer: "36", drugName: "骨刺胶囊", dosageForm: "胶囊剂", drugSpec: "0.36g",
+            manufacturerAbbr: "浙江维康", manufacturer: "浙江维康药业股份有限公司", manufacturerOld: "浙江维康药业有限公司", mediNameEn: "", comName: "", alias: "",
+            approvalNumber: "国药准字Z20050179", packagingUnit: "盒", minUseUnit: "粒", packingSpecifications: "36粒/盒", type: "骨伤科用药", factDtime: '2018-07-11 11:30:32'
+        },
+
+    ];
+    var $modal_form = $('#modal_form');
+    var $form_main = $('#form_main');
+    var $grid_table = $("#grid_table");
+    var $grid_pager = $('#grid_pager');
+    var unique_key = 'id';
+    var set_grid_btn = new SetGridBtn($grid_table, $modal_form, $form_main, grid_data, unique_key);
+
+    jQuery(function ($) {
+        var parent_column = $grid_table.closest('[class*="col-"]');
+        //resize to fit page size
+        $(window).on('resize.jqGrid', function () {
+            $grid_table.jqGrid('setGridWidth', parent_column.width());
+        });
+        //resize on sidebar collapse/expand
+        $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
+            if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
+                $grid_table.jqGrid('setGridWidth', parent_column.width());
+            }
+        });
+        $(document).one('ajaxloadstart.page', function (e) {
+            $.jgrid.gridDestroy("#grid_table");
+            $('.ui-jqdialog').remove();
+        });
+        if (!ace.vars['touch']) {
+            $('.chosen-select').chosen({allow_single_deselect: true});
+            //resize the chosen on window resize
+
+            $(window).off('resize.chosen').on('resize.chosen', function () {
+                $('.chosen-select').each(function () {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+            }).trigger('resize.chosen');
+            //resize chosen on sidebar collapse/expand
+            $(document).on('settings.ace.chosen', function (e, event_name, event_val) {
+                if (event_name != 'sidebar_collapsed') return;
+                $('.chosen-select').each(function () {
+                    var $this = $(this);
+                    $this.next().css({'width': $this.parent().width()});
+                })
+            });
+            $('#chosen-multiple-style .btn').on('click', function (e) {
+                var target = $(this).find('input[type=radio]');
+                var which = parseInt(target.val());
+                if (which == 2) $('#form-field-select-4').addClass('tag-input-style');
+                else $('#form-field-select-4').removeClass('tag-input-style');
+            });
+        }
+
+
+        $grid_table.jqGrid({
+            caption: "药库管理",
+            // url: '',
+            data: grid_data,
+            datatype: "local",
+            height: 350,
+            rownumbers: true,
+            multiselect: true,
+            multiboxonly: true,
+            //multikey: "ctrlKey",
+            autowidth: true,
+            shrinkToFit: false,
+            autoScroll: false,
+            editurl: "./dummy.php",//nothing is saved
+            pager: "#grid_pager",
+            rowNum: 10,
+            rowList: [10, 20, 30],
+            viewrecords: true,
+            altRows: true,
+            toppager: false,
+            colModel: [
+                {name: 'id', index: 'id', hidden: true},
+                {name: 'medicalName', index: 'medicalName', label: '医疗机构名称', width: 120, sortable: true},
+                {name: 'warehouseCode', index: 'warehouseCode', label: '药库编号', width: 100, sortable: true},
+                {name: 'warehouseName', index: 'warehouseName', label: '药库名', width: 180, sortable: true},
+                {name: 'factDtime', index: 'factDtime', label: '确认时间', width: 150, sortable: true},
+                {name: 'changeNumber', index: 'changeNumber', label: '变动数量', width: 130, sortable: true},
+                {name: 'dispatchName', index: 'dispatchName', label: '配送企业', width: 180, sortable: true},
+                {name: 'drugName', index: 'drugName', label: '药品名称', width: 150, sortable: true},
+                {name: 'dosageForm', index: 'dosageForm', label: '剂型', width: 100, sortable: true},
+                {name: 'packingSpecifications', index: 'packingSpecifications', label: '包装规格', width: 100, sortable: true},
+                {name: 'type', index: 'type', label: '类型', width: 100, sortable: true},
+                {name: 'manufacturer', index: 'manufacturer',width: 300, label: '生产厂商',  sortable: true,classes:'line-feed'},
+                // {
+                //     name: '', width: 150,align:'center',
+                //     formatter: function (v, i, r) {
+                //         return '<div class="hidden-sm hidden-xs action-buttons">' +
+                //             '<a class="blue" onclick="set_grid_btn.openLooking(' + r.id + ')">查看</a>' +
+                //             '<a class="green" onclick="set_grid_btn.openUpdating(' + r.id + ')">修改</a>' +
+                //             '<a class="red" onclick="set_grid_btn.openDeleting(' + r.id + ')">删除</a></div>'
+                //     }
+                // }
+            ],
+            loadComplete: function () {
+                updatePagerIcons(this);
+                setXbarAndRnums(true, true);
+            },
+            ondblClickRow: function () {
+                set_grid_btn.openLooking();
+            },
+
+            grouping: false,
+            groupingView: {
+                groupField: ['medicalId'], groupDataSorted: true, plusicon: 'fa fa-chevron-down bigger-110', minusicon: 'fa fa-chevron-up bigger-110'
+            }
+        });
+        $grid_table.jqGrid('navGrid', "#grid_pager", {
+            edit: true,
+            edittext: '编辑',
+            editicon: 'ace-icon fa fa-pencil blue',
+            add: true,
+            addtext: '添加',
+            addicon: 'ace-icon fa fa-plus-circle purple',
+            del: true,
+            deltext: '删除',
+            delicon: 'ace-icon fa fa-trash-o red',
+            search: false,
+            searchtext: '搜索',
+            searchicon: 'ace-icon fa fa-search orange',
+            refresh: true,
+            refreshtext: '刷新',
+            refreshicon: 'ace-icon fa fa-refresh green',
+            view: true,
+            viewtext: '查看详情',
+            viewicon: 'ace-icon fa fa-search-plus grey',
+            position: 'left',
+            addfunc: function () {
+                set_grid_btn.openAdding();
+            },
+            editfunc: function () {
+                set_grid_btn.openUpdating();
+            },
+            viewfunc: function () {
+                set_grid_btn.openLooking();
+            },
+            delfunc: function () {
+                set_grid_btn.openDeleting();
+            },
+            alertwidth: 300,
+            alertcap: '<span style="color: orange">操作出错</span>',
+            alerttext: '<div style="color: red;text-align: center;font-size:large">请选择需要操作的数据行！</div>'
+        });
+
+        function updatePagerIcons(table) {
+            var replacement = {
+                'ui-icon-seek-first': 'ace-icon fa fa-angle-double-left bigger-140',
+                'ui-icon-seek-prev': 'ace-icon fa fa-angle-left bigger-140',
+                'ui-icon-seek-next': 'ace-icon fa fa-angle-right bigger-140',
+                'ui-icon-seek-end': 'ace-icon fa fa-angle-double-right bigger-140'
+            };
+            $('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function () {
+                var icon = $(this);
+                var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
+
+                if ($class in replacement) icon.attr('class', 'ui-icon ' + replacement[$class]);
+            })
+        }
+
+        function setXbarAndRnums(is_xb, is_rn) {
+            if (is_xb) $grid_table.closest(".ui-jqgrid-bdiv").css({"overflow-x": "auto"});//控制底部滚动条显示隐藏 默认隐藏;hidden - auto
+            if (is_rn) $('.ui-jqgrid-labels th[id*="_cb"] .cbox').css({'margin-left': '9px'});//当行数显示出来的时候需加上，不然标题的选择框不居中
+
+            //$('.ui-jqgrid tr.jqgrow td').css({'white-space': 'normal', 'height': 'auto'});//如果当前列宽度不够，列内容是否可以换行显示
+
+        }
+
+        $(window).triggerHandler('resize.jqGrid');
+    });
+
+    $('.date-picker').datepicker({
+        autoclose: true, todayHighlight: true
+    }).next().on(ace.click_event, function () {
+        $(this).prev().focus();
+    });
+
+    $(function () {
+        var clock = new Clock();
+        clock.showTime($("#i_clock"));
+
+        $modal_form.on('show.bs.modal', function () {
+            if (!ace.vars['touch']) {
+                var _chose_container = $(this).find('.chosen-container');
+                var _chosen_select = $(this).find('.chosen-select');
+                _chose_container.css('width', '');
+                _chose_container.each(function () {
+                    $(this).find('a:first-child').css({'width': '100%', 'color': '#478FCA'});
+                    $(this).find('.chosen-drop').css({'width': '100%'});
+                    $(this).find('.chosen-search input').css({'width': '100%'});
+                });
+            }
+        });
+        $('#btn_cancel').click(function () {
+            $modal_form.modal('hide');
+        });
+        $('#btn_submit').click(function () {
+            //alert("btnSubmit")
+        });
+    });
+</script>
+</body>
+</html>
